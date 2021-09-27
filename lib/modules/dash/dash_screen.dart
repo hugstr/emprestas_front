@@ -8,6 +8,7 @@ class DashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(),
+      body: Center(),
     );
   }
 }
