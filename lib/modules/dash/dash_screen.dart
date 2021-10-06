@@ -1,3 +1,5 @@
+import 'package:empresta_s/modules/edit/edit_screen.dart';
+import 'package:empresta_s/modules/product/product_screen.dart';
 import 'package:empresta_s/widget/appbar/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -8,41 +10,23 @@ class DashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(),
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                      ]),
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                        DashCard(),
-                      ])
-                ],
-              )
-            ],
-          ),
+      body: Container(
+        child: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(20),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: [
+            DashCard(),
+            DashCard(),
+            DashCard(),
+            DashCard(),
+            DashCard(),
+            DashCard(),
+            DashCard(),
+            DashCard(),
+          ],
         ),
       ),
     );
@@ -56,10 +40,20 @@ class DashCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 200,
-      height: 150,
+    return TextButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      ),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductScreen(),
+          ),
+        );
+      },
       child: Card(
+        elevation: 0,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -79,7 +73,8 @@ class DashCard extends StatelessWidget {
                 TextButton(
                   child: const Text('Editar'),
                   onPressed: () {
-                    // TODO
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => EditScreen()));
                   },
                 ),
               ],

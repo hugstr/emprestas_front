@@ -1,4 +1,4 @@
-import 'package:empresta_s/modules/dash/dash_screen.dart';
+import 'package:empresta_s/modules/edit/edit_screen.dart';
 import 'package:empresta_s/modules/login/login_page.dart';
 import 'package:flutter/material.dart';
 
@@ -12,11 +12,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Emprestas',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DashScreen(),
+      initialRoute: '/',
+      home: LoginPage(),
     );
   }
 }
