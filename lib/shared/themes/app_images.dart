@@ -1,3 +1,4 @@
 class AppImages {
-  static const logo = "assets/images/logo.png";
+  static const emprestasLogo = "assets/images/emprestas_logo.png";
+  static const senaiLogo = "assets/images/logo.png";
 }

@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: size.width,
         height: size.height,
         child: Stack(
@@ -26,8 +26,14 @@ class _LoginPageState extends State<LoginPage> {
               right: 0,
               child: Column(
                 children: [
-                  Image.asset(
-                    AppImages.logo,
+                  SizedBox(
+                    height: size.height * 0.1,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 28.0, left: 28.0),
+                    child: Image.asset(
+                      AppImages.emprestasLogo,
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(50.0),
@@ -60,13 +66,28 @@ class _LoginPageState extends State<LoginPage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => DashScreen(),
+                                  builder: (context) => const DashScreen(),
                                 ),
                               ),
                             },
-                            child: Text('Entrar'),
+                            child: const Text('Entrar'),
                           ),
                         ),
+                        SizedBox(
+                          height: size.height * 0.25,
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Column(
+                              children: [
+                                const Text(
+                                  "powered by:",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                                Image.asset(AppImages.senaiLogo,
+                                    height: size.height * 0.07),
+                              ],
+                            )),
                       ],
                     ),
                   ),
