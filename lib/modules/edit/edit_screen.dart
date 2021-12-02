@@ -1,3 +1,4 @@
+import 'package:empresta_s/modules/dash/dash_screen.dart';
 import "package:flutter/material.dart";
 
 class EditScreen extends StatelessWidget {
@@ -16,29 +17,20 @@ class EditScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Image.network(
-                "https://m.media-amazon.com/images/I/51uhS7QO--L.jpg",
-                height: size.height * 0.2,
-                width: size.width,
-              ),
               SizedBox(height: 70),
               TextFormField(
-                decoration: InputDecoration(labelText: "Nome do item"),
+                decoration: InputDecoration(labelText: "Email do usuário"),
               ),
               SizedBox(height: 40),
               TextFormField(
-                decoration: InputDecoration(labelText: "Descrição"),
+                decoration: InputDecoration(labelText: "Itens"),
               ),
               SizedBox(height: 40),
               TextFormField(
-                decoration: InputDecoration(labelText: "Quantidade"),
-              ),
-              SizedBox(height: 40),
-              TextFormField(
-                decoration: InputDecoration(labelText: "Categoria"),
+                decoration: InputDecoration(labelText: "Data de devolução"),
               ),
               Image.network(
-                "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=cleancoder",
+                "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=71cc88d1-10ff-43ab-95f7-7dd7f7dc7af3",
                 width: size.width,
               ),
               ElevatedButton(
@@ -46,7 +38,10 @@ class EditScreen extends StatelessWidget {
                     backgroundColor:
                         MaterialStateProperty.all<Color>(Colors.green)),
                 onPressed: () {
-                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const DashScreen()));
                 },
                 child: Text(
                   "Salvar",

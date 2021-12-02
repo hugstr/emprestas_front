@@ -1,73 +1,110 @@
+import 'package:empresta_s/constants/emprestas_const.dart';
+import 'package:empresta_s/models/item_class.dart';
 import 'package:empresta_s/modules/edit/edit_screen.dart';
 import 'package:empresta_s/modules/product/product_screen.dart';
 import 'package:empresta_s/widget/appbar/app_bar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class DashScreen extends StatelessWidget {
+class DashScreen extends StatefulWidget {
   const DashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<DashScreen> createState() => _DashScreenState();
+}
+
+class _DashScreenState extends State<DashScreen> {
+  late List<Loan> loans;
+  int _selectedIndex = 0;
+  bool isLoading = false;
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 3: Settings',
+      style: optionStyle,
+    ),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    refreshBooks();
+  }
+
+  Future refreshBooks() async {
+    setState(() {
+      isLoading = true;
+    });
+    this.loans = await EmprestasDatabase.instance.getAllLoans();
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
     return Scaffold(
-      appBar: AppBarWidget(),
-      body: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(20),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        crossAxisCount: 2,
-        children: const [
-          DashCard(
-            cardIcon: "https://m.media-amazon.com/images/I/51uhS7QO--L.jpg",
-            cardTitle: "Clean Coder",
-            cardSubtitle: "Dev. 5/10",
-            cardColor: Colors.redAccent,
+        appBar: AppBarWidget(context),
+        body: Center(
+          child: GridView.count(
+            primary: false,
+            padding: const EdgeInsets.all(20),
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            crossAxisCount: 2,
+            children: <Widget>[
+              const DashCard(
+                cardTitle: '6 - hugstr',
+                cardSubtitle: 'PENDENTE',
+                cardColor: Colors.red,
+              ),
+              const DashCard(
+                cardTitle: '4 - anthon',
+                cardSubtitle: 'PENDENTE',
+              ),
+              const DashCard(
+                cardTitle: '3 - pedro',
+                cardSubtitle: 'PENDENTE',
+              ),
+              const DashCard(
+                cardTitle: '5 - hugstr',
+                cardSubtitle: 'CONCL.',
+                cardColor: Colors.green,
+              ),
+              const DashCard(
+                cardTitle: '2 - hugstr',
+                cardSubtitle: 'CONCL.',
+                cardColor: Colors.green,
+              ),
+              const DashCard(
+                cardTitle: '1 - hugstr',
+                cardSubtitle: 'CONCL.',
+                cardColor: Colors.green,
+              ),
+              const DashCard(
+                cardTitle: '0 - hugstr',
+                cardSubtitle: 'CANCEL',
+                cardColor: Colors.grey,
+              ),
+            ],
           ),
-          DashCard(
-            cardIcon: "https://m.media-amazon.com/images/I/51EDUtVbQfS.jpg",
-            cardTitle: "The Mythical Man-Month",
-            cardSubtitle: "Dev. 7/10",
-            cardColor: Colors.greenAccent,
-          ),
-          DashCard(
-            cardIcon:
-                "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQB7Pm55ivuiYtOfP6pJUtk9fO5UzdLXs0o3z2y77voY0xInJP_",
-            cardTitle: "Algoritmos teoria e prática",
-            cardSubtitle: "Dev. 18/10",
-          ),
-          DashCard(
-            cardIcon:
-                "https://m.media-amazon.com/images/P/B075CN35WH.01._SCLZZZZZZZ_SX500_.jpg",
-            cardTitle: "Leonardo Da Vinci",
-            cardSubtitle: "Dev. 18/10",
-          ),
-          DashCard(
-            cardIcon:
-                "https://images-na.ssl-images-amazon.com/images/I/71eTsvokmjL.jpg",
-            cardTitle: "Effective Modern C++",
-            cardSubtitle: "Dev. 18/10",
-          ),
-          DashCard(
-            cardIcon: "https://m.media-amazon.com/images/I/51aqYc1QyrL.jpg",
-            cardTitle: "Hands-on machine learning",
-            cardSubtitle: "Dev. 18/10",
-          ),
-          DashCard(
-            cardIcon: "https://m.media-amazon.com/images/I/51WMrr2knUL.jpg",
-            cardTitle: "DevOps Handbook",
-            cardSubtitle: "Dev. 23/10",
-          ),
-          DashCard(
-            cardIcon:
-                "https://images-na.ssl-images-amazon.com/images/I/91y1jCIfhSL.jpg",
-            cardTitle: "Scrum",
-            cardSubtitle: "Dev. 27/10",
-          ),
-        ],
-      ),
-    );
+        ));
   }
 }
 
@@ -123,18 +160,19 @@ class DashCard extends StatelessWidget {
                   },
                 ),
                 TextButton(
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                  ),
-                  child: const Text('Editar'),
-                  onPressed: () {
-                    Navigator.push(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.white),
+                    ),
+                    child: const Text('Editar'),
+                    onPressed: () {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const EditScreen()));
-                  },
-                ),
+                          builder: (context) => const EditScreen(),
+                        ),
+                      );
+                    }),
               ],
             ),
           ],
