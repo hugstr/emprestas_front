@@ -1,7 +1,8 @@
+import 'package:empresta_s/modules/edit/edit_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends PreferredSize {
-  AppBarWidget()
+  AppBarWidget(context)
       : super(
           preferredSize: Size.fromHeight(150),
           child: AppBar(
@@ -22,7 +23,7 @@ class AppBarWidget extends PreferredSize {
                         text: TextSpan(
                           text: 'Bem vindo, ',
                           style: TextStyle(
-                            fontSize: 25,
+                            fontSize: 20,
                             color: Colors.white,
                           ),
                           children: const <TextSpan>[
@@ -34,6 +35,30 @@ class AppBarWidget extends PreferredSize {
                             ),
                           ],
                         ),
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EditScreen()));
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(
+                          Icons.camera_alt,
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const EditScreen()));
+                        },
                       ),
                       SizedBox(
                         width: 20,
