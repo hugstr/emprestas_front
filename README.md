@@ -1,16 +1,27 @@
-# empresta_s
+# Jornada 2021-02
 
-A new Flutter project.
+[https://yt3.ggpht.com/ytc/AKedOLRt1d4p7bPylasq_66BIC8-k3hkyVjJ2JICQITK=s900-c-k-c0x00ffffff-no-rj](https://yt3.ggpht.com/ytc/AKedOLRt1d4p7bPylasq_66BIC8-k3hkyVjJ2JICQITK=s900-c-k-c0x00ffffff-no-rj)
 
-## Getting Started
+## Setup do frontend:
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Instalar o Flutter e dependências de acordo com o manual de get-started:
+    
+    [Install](https://docs.flutter.dev/get-started/install)
+    
+2. Clonar o projeto localmente e puxar as dependências do mesmo com o comando abaixo: 
+    
+    ```dart
+    flutter pub get
+    ```
+    
+    No caso de estar utilizando o VSCode, é possível conseguir as dependências do pubspec.yaml apenas entrando no arquivo e salvando-o).
+    
+3. Escolha na IDE o dispositivo onde o build do aplicativo ocorrerá e execute o comando:
+    
+    ```dart
+    flutter run
+    // Caso não esteja em uma IDE, execute
+    flutter run -d <device-id>
+    ```
+    
+4. Com isto, o frontend da aplicação deve estar funcionando de maneira correta.
