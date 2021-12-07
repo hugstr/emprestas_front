@@ -1,6 +1,6 @@
 # Jornada 2021-02
 
-[https://yt3.ggpht.com/ytc/AKedOLRt1d4p7bPylasq_66BIC8-k3hkyVjJ2JICQITK=s900-c-k-c0x00ffffff-no-rj](https://yt3.ggpht.com/ytc/AKedOLRt1d4p7bPylasq_66BIC8-k3hkyVjJ2JICQITK=s900-c-k-c0x00ffffff-no-rj)
+![Flutter](readme/flutter_logo.png)
 
 ## Setup do frontend:
 
